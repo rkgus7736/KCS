@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Insert title here</title>
+<script src = "../lib/jquery-3.5.1.min.js"></script>
+<script>
+	$(function(){	
+	//display:none인 경우만 선택
+	$(".pop p:hidden").css("display","block");
+	
+	alert($("form input:checked").length); //체크된 갯수
+
+	$("form input:checked").each(function(i, obj) {
+		console.log($(obj).val()); //체크된 것들의 value의 값이 나옴
+	});
+
+	//select :selected 띄어쓰기 안하면 하위선택자 발동X
+	console.log($("select :selected").val()); 
+	
+	$("input").each(function(i,obj){
+		console.log($(this).is(":checked"));//숨긴게 나오는지
+	});
+	$("p").each(function(i,obj){
+		console.log($(this).is(":visible"));//보여지는게 나오는지
+	})
+	});
+</script>
+</head>
+<body>
+	<div class="pop">
+		<p>내용1</p>
+		<p style="display:none;">내용2</p> 
+		<!-- display : 형태 없음 (해당 내용 영역까지 삭제) -->
+		<p>내용3</p>
+	</div>
+	<div class="pop">
+		<p>내용1</p>
+		<p style="visibility:hidden;">내용2</p> 
+		<!-- visibility : 내용 숨김처리 (해당 내용 영역은 그대로) -->
+		<p>내용3</p>
+	</div>
+	<form action="">
+		<label><input type="checkbox" value="c1">체크1</label><br>
+		<label><input type="checkbox" value="c2" checked>체크2</label><br>
+		<label><input type="checkbox" value="c3">체크3</label><br>
+		<hr>
+		<label><input type="radio" name="radio" value="r1">라디오1</label><br>
+		<label><input type="radio" name="radio" value="r2">라디오2</label><br>
+		<label><input type="radio" name="radio" value="r3" checked>라디오3</label><br>
+		<hr>
+	<select>
+		<option value="o1">항목1</option>
+		<option value="o2">항목2</option>
+		<option value="o3" selected>항목3</option>
+		<option value="o4">항목4</option>
+	</select>
+	</form>
+</body>
+</html>
